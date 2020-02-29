@@ -1,0 +1,29 @@
+Script started on Sat Feb 29 18:46:03 2020
+[?1034hbash-3.2$ cd Downloads
+bash-3.2$ wget files.grouplens.org.[K/dta[K[Katasets/movielens/ml-latest-small.zip
+--2020-02-29 18:46:50--  http://files.grouplens.org/datasets/movielens/ml-latest-small.zip
+Resolving files.grouplens.org (files.grouplens.org)... 128.101.65.152
+Connecting to files.grouplens.org (files.grouplens.org)|128.101.65.152|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 978202 (955K) [application/zip]
+Saving to: ‘ml-latest-small.zip’
+
+ml-latest-small.zip        0%[                                   ]       0  --.-KB/s               ml-latest-small.zip       34%[===========>                       ] 331.98K  1.54MB/s               ml-latest-small.zip      100%[==================================>] 955.28K  3.02MB/s    in 0.3s    
+
+2020-02-29 18:46:51 (3.02 MB/s) - ‘ml-latest-small.zip’ saved [978202/978202]
+
+bash-3.2$ uni[Kzip ml-latest-small.zip
+Archive:  ml-latest-small.zip
+   creating: ml-latest-small/
+  inflating: ml-latest-small/links.csv  
+  inflating: ml-latest-small/tags.csv  
+  inflating: ml-latest-small/ratings.csv  
+  inflating: ml-latest-small/README.txt  
+  inflating: ml-latest-small/movies.csv  
+bash-3.2$ cat ml[K[K[K[K[K[Kcd ml-latest-small
+bash-3.2$ ls
+README.txt	links.csv	movies.csv	ratings.csv	tags.csv
+bash-3.2$ exit
+exit
+
+Script done on Sat Feb 29 18:47:57 2020

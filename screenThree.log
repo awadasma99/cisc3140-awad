@@ -1,0 +1,27 @@
+Script started on Sat Feb 29 18:49:20 2020
+[?1034hbash-3.2$ cd Downloads
+bash-3.2$ cd ml-latest-small
+bash-3.2$ ls
+README.txt	links.csv	movies.csv	ratings.csv	tags.csv
+bash-3.2$ head -n 12[K[K[K121[K [K[K[K 12 movies.csv
+movieId,title,genres
+1,Toy Story (1995),Adventure|Animation|Children|Comedy|Fantasy
+2,Jumanji (1995),Adventure|Children|Fantasy
+3,Grumpier Old Men (1995),Comedy|Romance
+4,Waiting to Exhale (1995),Comedy|Drama|Romance
+5,Father of the Bride Part II (1995),Comedy
+6,Heat (1995),Action|Crime|Thriller
+7,Sabrina (1995),Comedy|Romance
+8,Tom and Huck (1995),Adventure|Children
+9,Sudden Death (1995),Action
+10,GoldenEye (1995),Action|Adventure|Thriller
+11,"American President, The (1995)",Comedy|Drama|Romance
+bash-3.2$ tail -n 4 movies.csv
+193583,No Game No Life: Zero (2017),Animation|Comedy|Fantasy
+193585,Flint (2017),Drama
+193587,Bungo Stray Dogs: Dead Apple (2018),Action|Animation
+193609,Andrew Dice Clay: Dice Rules (1991),Comedy
+bash-3.2$ exit
+exit
+
+Script done on Sat Feb 29 18:51:18 2020

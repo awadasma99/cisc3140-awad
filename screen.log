@@ -1,0 +1,315 @@
+Script started on Sat Feb 29 18:26:36 2020
+[?1034hbash-3.2$ awk 'BEGIN{FS=","} {print $3}' viral-gloabl[K[K[Kbal-daily-latest.cs[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kcd Downloads
+bash-3.2$ awk 'BEGIN{FS=","}{print $3}' [C[1@ [C[C[C[C[C[C[C[C[C[C[C[C v i [1P [1P [K[1P ' [C v i r a l - g l o b a l - d a i l y - l a y e s [1P [1P [1P t e s t . c s v 
+Artist
+Cookiee Kawaii
+Ashe
+Powfu
+DripReport
+ANNA
+Breland
+Ultradiox
+Jack Harlow
+YOON MI RAE
+Tiagz
+Smoove'L
+Mahen
+Surfaces
+MASE
+Brent Faiyaz
+Doja Cat
+Swing
+24kGoldn
+Yerin Baek
+Roddy Ricch
+The Kid LAROI
+Zeynep Bast��k
+Zico
+Lil Kapow
+Murda
+The Weeknd
+Pole.
+SAINt JHN
+Rennan da Penha
+Arsy Widianto
+Hindia
+UPSAHL
+Opgeblazen
+SAYGRACE
+Soulstice
+EVERGLOW
+Ali Gatie
+Myke Towers
+Official HIGE DANdism
+Thiaguinho MT
+Fasma
+Reynmen
+Pop Smoke
+Victor Leksell
+Dua Lipa
+Doja Cat
+Y�_zy�_zeyken Konu��uruz
+Teqkoi
+PUBLIC
+Trevor Daniel
+bash-3.2$ touch artistNames.csv
+bash-3.2$ awk 'BEGIN{FS=","} {print $3}' viral-global-daily-latest.csv > artistN ames.csv
+bash-3.2$ cat at[KrtistNames.csv
+Artist
+Cookiee Kawaii
+Ashe
+Powfu
+DripReport
+ANNA
+Breland
+Ultradiox
+Jack Harlow
+YOON MI RAE
+Tiagz
+Smoove'L
+Mahen
+Surfaces
+MASE
+Brent Faiyaz
+Doja Cat
+Swing
+24kGoldn
+Yerin Baek
+Roddy Ricch
+The Kid LAROI
+Zeynep Bast��k
+Zico
+Lil Kapow
+Murda
+The Weeknd
+Pole.
+SAINt JHN
+Rennan da Penha
+Arsy Widianto
+Hindia
+UPSAHL
+Opgeblazen
+SAYGRACE
+Soulstice
+EVERGLOW
+Ali Gatie
+Myke Towers
+Official HIGE DANdism
+Thiaguinho MT
+Fasma
+Reynmen
+Pop Smoke
+Victor Leksell
+Dua Lipa
+Doja Cat
+Y�_zy�_zeyken Konu��uruz
+Teqkoi
+PUBLIC
+Trevor Daniel
+bash-3.2$ sort -u <(tail -n + [K3[K[K[K+3 atri[K[K[KrtistNAm[K[Kames.csv)
+24kGoldn
+ANNA
+Ali Gatie
+Arsy Widianto
+Ashe
+Breland
+Brent Faiyaz
+Doja Cat
+DripReport
+Dua Lipa
+EVERGLOW
+Fasma
+Hindia
+Jack Harlow
+Lil Kapow
+MASE
+Mahen
+Murda
+Myke Towers
+Official HIGE DANdism
+Opgeblazen
+PUBLIC
+Pole.
+Pop Smoke
+Powfu
+Rennan da Penha
+Reynmen
+Roddy Ricch
+SAINt JHN
+SAYGRACE
+Smoove'L
+Soulstice
+Surfaces
+Swing
+Teqkoi
+The Kid LAROI
+The Weeknd
+Thiaguinho MT
+Tiagz
+Trevor Daniel
+UPSAHL
+Ultradiox
+Victor Leksell
+YOON MI RAE
+Yerin Baek
+YÌ_zyÌ_zeyken KonuÙuruz
+Zeynep Bast±k
+Zico
+bash-3.2$ head -n2 artistNames.csv && sort -u -f <(tail -n+3 artistNames.csv)
+Artist
+Cookiee Kawaii
+24kGoldn
+Ali Gatie
+ANNA
+Arsy Widianto
+Ashe
+Breland
+Brent Faiyaz
+Doja Cat
+DripReport
+Dua Lipa
+EVERGLOW
+Fasma
+Hindia
+Jack Harlow
+Lil Kapow
+Mahen
+MASE
+Murda
+Myke Towers
+Official HIGE DANdism
+Opgeblazen
+Pole.
+Pop Smoke
+Powfu
+PUBLIC
+Rennan da Penha
+Reynmen
+Roddy Ricch
+SAINt JHN
+SAYGRACE
+Smoove'L
+Soulstice
+Surfaces
+Swing
+Teqkoi
+The Kid LAROI
+The Weeknd
+Thiaguinho MT
+Tiagz
+Trevor Daniel
+Ultradiox
+UPSAHL
+Victor Leksell
+Yerin Baek
+YOON MI RAE
+YÌ_zyÌ_zeyken KonuÙuruz
+Zeynep Bast±k
+Zico
+bash-3.2$ head -n2 artistNames.csv && sort -u -f <(tail -n+3 artistNames.csv)[C[1P[1@+[C[1P artistNames.csv)3 artistNames.csv)[1P artistNames.csv)2 artistNames.csv)[C artistNames.csv)[1PartistNames.csv)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+Artist
+Cookiee Kawaii
+24kGoldn
+Ali Gatie
+ANNA
+Arsy Widianto
+Ashe
+Breland
+Brent Faiyaz
+Cookiee Kawaii
+Doja Cat
+DripReport
+Dua Lipa
+EVERGLOW
+Fasma
+Hindia
+Jack Harlow
+Lil Kapow
+Mahen
+MASE
+Murda
+Myke Towers
+Official HIGE DANdism
+Opgeblazen
+Pole.
+Pop Smoke
+Powfu
+PUBLIC
+Rennan da Penha
+Reynmen
+Roddy Ricch
+SAINt JHN
+SAYGRACE
+Smoove'L
+Soulstice
+Surfaces
+Swing
+Teqkoi
+The Kid LAROI
+The Weeknd
+Thiaguinho MT
+Tiagz
+Trevor Daniel
+Ultradiox
+UPSAHL
+Victor Leksell
+Yerin Baek
+YOON MI RAE
+YÌ_zyÌ_zeyken KonuÙuruz
+Zeynep Bast±k
+Zico
+bash-3.2$ head -n2 artistNames.csv && sort -u -f <(tail -n+2 artistNames.csv)[1P[1@1[1P[1@n[C[1P[1@1
+Artist
+24kGoldn
+Ali Gatie
+ANNA
+Arsy Widianto
+Ashe
+Breland
+Brent Faiyaz
+Cookiee Kawaii
+Doja Cat
+DripReport
+Dua Lipa
+EVERGLOW
+Fasma
+Hindia
+Jack Harlow
+Lil Kapow
+Mahen
+MASE
+Murda
+Myke Towers
+Official HIGE DANdism
+Opgeblazen
+Pole.
+Pop Smoke
+Powfu
+PUBLIC
+Rennan da Penha
+Reynmen
+Roddy Ricch
+SAINt JHN
+SAYGRACE
+Smoove'L
+Soulstice
+Surfaces
+Swing
+Teqkoi
+The Kid LAROI
+The Weeknd
+Thiaguinho MT
+Tiagz
+Trevor Daniel
+Ultradiox
+UPSAHL
+Victor Leksell
+Yerin Baek
+YOON MI RAE
+YÌ_zyÌ_zeyken KonuÙuruz
+Zeynep Bast±k
+Zico
+bash-3.2$ exit
+exit
+
+Script done on Sat Feb 29 18:35:04 2020
