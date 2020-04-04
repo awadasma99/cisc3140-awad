@@ -8,7 +8,10 @@ HTTP request sent, awaiting response... 200 OK
 Length: 978202 (955K) [application/zip]
 Saving to: ‘ml-latest-small.zip’
 
-ml-latest-small.zip        0%[                                   ]       0  --.-KB/s               ml-latest-small.zip       34%[===========>                       ] 331.98K  1.54MB/s               ml-latest-small.zip      100%[==================================>] 955.28K  3.02MB/s    in 0.3s    
+
+ml-latest-small.zip        0%[                                   ]       0  --.-KB/s               
+ml-latest-small.zip       34%[===========>                       ] 331.98K  1.54MB/s               
+ml-latest-small.zip      100%[==================================>] 955.28K  3.02MB/s    in 0.3s    
 
 2020-02-29 18:46:51 (3.02 MB/s) - ‘ml-latest-small.zip’ saved [978202/978202]
 
