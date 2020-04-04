@@ -1,9 +1,6 @@
 To run this locally, you need to acquire an API key for the RAWG Video Games Database, which can be done via RAWG's
-official site or through an API Marketplace that includes RAWG Video Games Database. 
+official site or through an API Marketplace that includes RAWG Video Games Database, then enter it on lines 8 and 31 of the source code. 
 
-The app utilizes RAWG's API by accessing a list of games, each of which has information pertaining to the game such as 
-ratings, stores the game is sold in, etc., as well as a list of genres provided by RAWG. 
+The app, written in Python, utilizes RAWG's API by accessing a list of games— each of which has information pertaining to the game such as ratings, player count, etc.— as well as a list of genres provided by RAWG. Using the genre information, the app returns a list of games that fall under the user-specified genre in the form of an HTML webpage. 
 
-The user chooses a genre by number as listed by the program, and the program creates an HTML webpage listing all games that 
-are provided by RAWG in that category. In the provided HTML file, I entered 0, pertaining to the "Action" genre to 
-serve as an example of how the HTML file is formatted by the program. 
+When the program is run, the app lists the genres and prompts the user to choose one by entering its corresponding number. It then notifies the user if games were registered under that genre by providing the name of the HTML file that can be opened in a browser. Otherwise, if no games were found, it notifies the user accordingly. As an example, I entered 0 via the command line, which pertains to the "Action" genre, and the program generated what is in the "games.html" file, which can be opened in your browser to get a visual of what the HTML page would look like. 
