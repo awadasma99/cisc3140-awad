@@ -23,7 +23,7 @@ Swing
 Yerin Baek
 Roddy Ricch
 The Kid LAROI
-Zeynep Bast��k
+Zeynep Bast€±k
 Zico
 Lil Kapow
 Murda
@@ -48,12 +48,13 @@ Pop Smoke
 Victor Leksell
 Dua Lipa
 Doja Cat
-Y�_zy�_zeyken Konu��uruz
+YÌ_zyÌ_zeyken KonuÙuruz
 Teqkoi
 PUBLIC
 Trevor Daniel
 bash-3.2$ touch artistNames.csv
-bash-3.2$ awk 'BEGIN{FS=","} {print $3}' viral-global-daily-latest.csv > artistN ames.csv
+bash-3.2$ awk 'BEGIN{FS=","} {print $3}' viral-global-daily-latest.csv > artistN 
+ames.csv
 bash-3.2$ cat at[KrtistNames.csv
 Artist
 Cookiee Kawaii
@@ -77,7 +78,7 @@ Swing
 Yerin Baek
 Roddy Ricch
 The Kid LAROI
-Zeynep Bast��k
+Zeynep Bast€±k
 Zico
 Lil Kapow
 Murda
@@ -102,7 +103,7 @@ Pop Smoke
 Victor Leksell
 Dua Lipa
 Doja Cat
-Y�_zy�_zeyken Konu��uruz
+YÌ_zyÌ_zeyken KonuÙuruz
 Teqkoi
 PUBLIC
 Trevor Daniel
@@ -152,8 +153,8 @@ Ultradiox
 Victor Leksell
 YOON MI RAE
 Yerin Baek
-YÌ_zyÌ_zeyken KonuÙuruz
-Zeynep Bast±k
+YÃŒ_zyÃŒ_zeyken KonuÂÃ™uruz
+Zeynep BastÂ€Â±k
 Zico
 bash-3.2$ head -n2 artistNames.csv && sort -u -f <(tail -n+3 artistNames.csv)
 Artist
@@ -203,8 +204,8 @@ UPSAHL
 Victor Leksell
 Yerin Baek
 YOON MI RAE
-YÌ_zyÌ_zeyken KonuÙuruz
-Zeynep Bast±k
+YÃŒ_zyÃŒ_zeyken KonuÂÃ™uruz
+Zeynep BastÂ€Â±k
 Zico
 bash-3.2$ head -n2 artistNames.csv && sort -u -f <(tail -n+3 artistNames.csv)[C[1P[1@+[C[1P artistNames.csv)3 artistNames.csv)[1P artistNames.csv)2 artistNames.csv)[C artistNames.csv)[1PartistNames.csv)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
 Artist
@@ -255,8 +256,8 @@ UPSAHL
 Victor Leksell
 Yerin Baek
 YOON MI RAE
-YÌ_zyÌ_zeyken KonuÙuruz
-Zeynep Bast±k
+YÃŒ_zyÃŒ_zeyken KonuÂÃ™uruz
+Zeynep BastÂ€Â±k
 Zico
 bash-3.2$ head -n2 artistNames.csv && sort -u -f <(tail -n+2 artistNames.csv)[1P[1@1[1P[1@n[C[1P[1@1
 Artist
@@ -306,8 +307,8 @@ UPSAHL
 Victor Leksell
 Yerin Baek
 YOON MI RAE
-YÌ_zyÌ_zeyken KonuÙuruz
-Zeynep Bast±k
+YÃŒ_zyÃŒ_zeyken KonuÂÃ™uruz
+Zeynep BastÂ€Â±k
 Zico
 bash-3.2$ exit
 exit
