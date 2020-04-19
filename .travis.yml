@@ -1,0 +1,17 @@
+language: python 
+python: 
+  - "3.8" 
+
+cache: pip
+
+install: 
+  - pip3 install requests
+  - pip install -r requirements/dev.txt
+
+script: 
+  - python3 assignment9.py
+
+deploy:
+  provider: heroku
+  api_key: {{ secrets.heroku_key }}
+  app: assign-ten-app
