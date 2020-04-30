@@ -1,4 +1,4 @@
-Midterm 2 - Part 2
+## Midterm 2 - Part 2
 
 I decided to implement my own input mask so as to get a better understanding of how event listeners work and how
 HTML/CSS/Javascript work together to create a dynamic webpage. (First TODO) The input is retreived from the html file via
