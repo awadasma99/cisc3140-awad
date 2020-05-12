@@ -9,7 +9,7 @@ import Svg.Attributes exposing (..)
 import Task
 import Random
 
--- models
+-- all models
 type alias Model =
   { ball : Ball
   , rPaddle : Paddle
@@ -29,27 +29,35 @@ type alias Ball =
   , hSpeed : Int
   , vSpeed : Int
   }
-
+-- paddle attributes
 type alias PaddleInfo =
   { x : Int
   , y : Int
   , width : Int
   , height : Int
   }
-
+-- players scores
 type alias Score =
   { rightPlayerScore : Int
   , leftPlayerScore : Int
   }
-
+-- for input from index file
 type alias Flags =
     Float
 
 -- custom types
+
+-- paddle objects
+type Paddle
+    = RightPaddle PaddleInfo
+    | LeftPaddle PaddleInfo
+
+-- in progress or someone scored
 type GameStatus
   = InProgress
   | Winner Player
 
+-- messages
 type Msg
     = OnAnimationFrame Float
     | KeyDown PlayerInput
@@ -57,33 +65,33 @@ type Msg
     | Restart
     | NewWinner Player
 
+-- key stroke types
 type PlayerInput
     = RightPaddleUp
     | RightPaddleDown
     | LeftPaddleUp
     | LeftPaddleDown
 
-type Paddle
-    = RightPaddle PaddleInfo
-    | LeftPaddle PaddleInfo
-
+-- paddle objects' states
 type PaddleMovement
     = Up
     | Down
     | Idle
 
+-- player objects
 type Player
   = LeftPlayer
   | RightPlayer
 
+-- INIT
+
+-- for spawning position + speed
 randomVSpeed : Random.Seed -> ( Int, Random.Seed )
 randomVSpeed seed =
   Random.step (Random.int -10 10) seed
 
-
---  INIT
 init : Flags -> ( Model, Cmd Msg )
-init seed =
+init seed = -- seed being the random flag input from html file
   let
     initialSeed =
       seed
@@ -94,12 +102,15 @@ init seed =
     ( initVSpeed , newSeed ) =
       randomVSpeed initialSeed
 
+    -- assign the initial spawn speed to the ball
     initialBall =
       { initBall | vSpeed = initVSpeed }
+
+  -- initial game screen setup
   in
   ( { ball = initialBall
-    , rPaddle = RightPaddle <| initPaddle 480 -- intial x-pos 480
-    , lPaddle = LeftPaddle <| initPaddle 10 -- initial x-pos 10
+    , rPaddle = RightPaddle <| initPaddle 480 -- x-pos 480
+    , lPaddle = LeftPaddle <| initPaddle 10 -- x-pos 10
     , rPaddleMovement = Idle
     , lPaddleMovement = Idle
     , gameStatus = InProgress
@@ -112,7 +123,7 @@ init seed =
   , Cmd.none
   )
 
--- initial ball attributes
+-- ball attributes
 initBall : Ball
 initBall =
   { x = 250
@@ -121,7 +132,7 @@ initBall =
   , hSpeed = 4
   , vSpeed = 2
   }
--- initial paddle attributes
+-- paddle attributes
 initPaddle : Int -> PaddleInfo
 initPaddle initX =
   { x = initX
@@ -130,7 +141,7 @@ initPaddle initX =
   , height = 50
   }
 
--- include init, view, update
+-- make calls to init, view, update
 main : Program Flags Model Msg
 main =
   -- receive events from Browser
@@ -138,14 +149,13 @@ main =
     { init = init
     , view = view
     , update = update
-    , subscriptions = subscriptions
+    , subscriptions = subscriptions -- for frame + input event related data
     }
 
 -- UPDATE
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-  -- create a new ball with an x value changed by 4 per animation frame
   case msg of
     OnAnimationFrame timeDelta ->
       let
@@ -158,16 +168,17 @@ update msg model =
           , rPaddle = updatePaddle model.rPaddleMovement model.rPaddle
           , lPaddle = updatePaddle model.lPaddleMovement model.lPaddle
           }
-
+      -- update game status
       in
       case ( maybeWinner updatedBall, model.gameStatus ) of
-        -- if there's a winner, return call to update with the winner message
+        -- if there's a winner, return call to update
         ( Just player, InProgress ) ->
           update (NewWinner player) updatedModel
         -- if not, just return the updated models
         _ ->
           ( updatedModel, Cmd.none )
 
+    -- restart, update the score, small pause before respawning the ball
     NewWinner player ->
       let
         alwaysRestart : a -> Msg
@@ -177,10 +188,12 @@ update msg model =
         updatedScore =
           updateScores model.score player
 
+        -- small delay before restart
         sleepCmd =
           Process.sleep 500
             |> Task.perform alwaysRestart
 
+      -- model updates
       in
       ( { model
           | gameStatus = Winner player
@@ -189,7 +202,7 @@ update msg model =
       , sleepCmd
       )
 
-    -- when a key is pressed, change the paddle
+    -- when a valid key is pressed, change the respective paddle position
     KeyDown playerInput ->
       case playerInput of
         RightPaddleUp ->
@@ -209,11 +222,13 @@ update msg model =
           , Cmd.none
           )
 
+    -- restart at random speed
     Restart ->
       let
         ( vSpeed, newSeed ) =
           randomVSpeed model.seed
 
+        -- aimed toward last loser
         newDirection =
           case model.gameStatus of
             Winner RightPlayer ->
@@ -235,7 +250,7 @@ update msg model =
       , Cmd.none
       )
 
-
+    -- so that the paddles don't move "automatically" / without player input
     KeyUp playerInput ->
       case playerInput of
         RightPaddleUp ->
@@ -256,7 +271,7 @@ update msg model =
           )
 
 updateBall :
-  -- extensible record for noting important arguments and specifying fields for return
+  -- extensible record for noting important arguments + return
   { a
       | gameStatus : GameStatus
       , ball : Ball
@@ -266,10 +281,10 @@ updateBall :
   -> Ball
 updateBall { gameStatus, ball, rPaddle, lPaddle } =
   let
+    -- checking if the ball was hit at an angle by a paddle
     maybeAngleBounceRight =
       bounceDistance rPaddle ball
 
-    -- hit a paddle, change direction
     maybeAngleBounceLeft =
       bounceDistance lPaddle ball
 
@@ -279,6 +294,8 @@ updateBall { gameStatus, ball, rPaddle, lPaddle } =
       else
         maybeAngleBounceRight
 
+    -- if the ball was hit at an angle, change the vertical speed
+    -- otherwise, leave it the same
     ( hSpeed, bouncedVSpeed ) =
       case maybeAngleBounce of
         Nothing ->
@@ -288,17 +305,18 @@ updateBall { gameStatus, ball, rPaddle, lPaddle } =
           , distance // 10
           )
 
-    -- if the ball should change direction vertically
+    -- if the ball hits the wall...
     shouldBounceOffWall =
       bounceOffWallCheck ball
 
-    -- hit wall, change direction
+    -- ...change direction
     vSpeed =
       if shouldBounceOffWall then
         bouncedVSpeed * -1
       else
         bouncedVSpeed
   in
+  -- if the games in progress, continuously update the ball attributes
   case gameStatus of
     Winner _ ->
       ball
@@ -311,7 +329,7 @@ updateBall { gameStatus, ball, rPaddle, lPaddle } =
       }
 
 
--- moves the paddle based on user input
+-- move the paddle based on user input
 updatePaddle : PaddleMovement -> Paddle -> Paddle
 updatePaddle movement paddle =
   let
@@ -326,6 +344,7 @@ updatePaddle movement paddle =
   in
   case paddle of
     -- clamp function ensures the boundaries of the top/bottom game walls
+    -- making sure the paddles dont go off screen
     RightPaddle paddleInfo ->
       { paddleInfo
           | y =
@@ -350,6 +369,7 @@ bounceDistance paddle ball =
   let
     normalize : Int -> Int -> Int
     normalize distance height =
+      -- calculating angle
       (distance - (height // 2)) * 100 // (height // 2)
   in
   case paddle of
@@ -384,6 +404,7 @@ bounceOffWallCheck ball =
   in
   ball.y <= radius || ball.y >= (500 - radius)
 
+-- if the ball is behind the left/right paddle, the opposing player wins
 maybeWinner : Ball -> Maybe Player
 maybeWinner ball =
   if ball.x <= ball.radius then
@@ -393,6 +414,7 @@ maybeWinner ball =
   else
     Nothing
 
+-- updating score based on a provided winner + preexisting score
 updateScores : Score -> Player -> Score
 updateScores score winner =
   case winner of
@@ -420,7 +442,7 @@ view { ball, rPaddle, lPaddle, score } =
     , viewScore score
     ]
 
--- the "net"
+-- the "net" in the middle
 viewDivider : Svg.Svg Msg
 viewDivider =
   line
@@ -430,11 +452,11 @@ viewDivider =
     , y2 "500"
     , stroke "black"
     , strokeDasharray "4"
-    , strokeWidth "2"
+    , strokeWidth "4"
     ]
     []
 
--- using int arguments so as to allow for movement
+-- the ball
 viewBall : Ball -> Svg.Svg Msg
 viewBall { x, y, radius } =
      circle
@@ -443,6 +465,8 @@ viewBall { x, y, radius } =
          , r <| String.fromInt radius
          ]
          []
+
+-- the paddles
 viewPaddle : Paddle -> Svg.Svg Msg
 viewPaddle paddle =
   let
@@ -461,6 +485,7 @@ viewPaddle paddle =
       ]
       []
 
+-- the score
 viewScore : Score -> Svg.Svg Msg
 viewScore score =
   g
@@ -475,7 +500,7 @@ viewScore score =
     [ text <| String.fromInt score.rightPlayerScore ]
   ]
 
--- provides an event
+-- provides an event— keyboard events, animation frames 
 subscriptions : Model -> Sub Msg
 subscriptions model =
   Sub.batch
