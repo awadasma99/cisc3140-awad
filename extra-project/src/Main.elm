@@ -43,7 +43,7 @@ type alias Score =
   }
 
 type alias Flags =
-    ()
+    Float
 
 -- custom types
 type GameStatus
@@ -76,10 +76,28 @@ type Player
   = LeftPlayer
   | RightPlayer
 
+randomVSpeed : Random.Seed -> ( Int, Random.Seed )
+randomVSpeed seed =
+  Random.step (Random.int -10 10) seed
+
+
 --  INIT
 init : Flags -> ( Model, Cmd Msg )
-init _ =
-  ( { ball = initBall
+init seed =
+  let
+    initialSeed =
+      seed
+        |> (*) 100
+        |> round
+        |> Random.initialSeed
+
+    ( initVSpeed , newSeed ) =
+      randomVSpeed initialSeed
+
+    initialBall =
+      { initBall | vSpeed = initVSpeed }
+  in
+  ( { ball = initialBall
     , rPaddle = RightPaddle <| initPaddle 480 -- intial x-pos 480
     , lPaddle = LeftPaddle <| initPaddle 10 -- initial x-pos 10
     , rPaddleMovement = Idle
@@ -89,7 +107,7 @@ init _ =
         { rightPlayerScore = 0
         , leftPlayerScore = 0
         }
-    , seed = Random.initialSeed 42
+    , seed = newSeed
     }
   , Cmd.none
   )
@@ -163,16 +181,10 @@ update msg model =
           Process.sleep 500
             |> Task.perform alwaysRestart
 
-        ( randomDirection, newSeed ) =
-                 model.seed
-                    |> Random.step (Random.int 0 100)
-                    |> Debug.log "Random direction: "
-
       in
       ( { model
           | gameStatus = Winner player
           , score = updatedScore
-          , seed = newSeed
         }
       , sleepCmd
       )
@@ -198,9 +210,27 @@ update msg model =
           )
 
     Restart ->
+      let
+        ( vSpeed, newSeed ) =
+          randomVSpeed model.seed
+
+        newDirection =
+          case model.gameStatus of
+            Winner RightPlayer ->
+              -1
+            _ ->
+              1
+
+        ball =
+          { initBall
+              | vSpeed = vSpeed
+              , hSpeed = initBall.hSpeed * newDirection
+          }
+      in
       ( { model
-          | ball = initBall
+          | ball = ball
           , gameStatus = InProgress
+          , seed = newSeed
         }
       , Cmd.none
       )
