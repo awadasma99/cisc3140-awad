@@ -9,7 +9,7 @@ import Svg.Attributes exposing (..)
 import Task
 import Random
 
--- all models
+-- all game models under Model 
 type alias Model =
   { ball : Ball
   , rPaddle : Paddle
@@ -490,7 +490,7 @@ viewScore : Score -> Svg.Svg Msg
 viewScore score =
   g
   -- display the score
-  [ fontSize "100px"
+  [ fontSize "85px"
   , fontFamily "Marker Felt"
   , color "white"
   ]
@@ -500,7 +500,7 @@ viewScore score =
     [ text <| String.fromInt score.rightPlayerScore ]
   ]
 
--- provides an event— keyboard events, animation frames 
+-- provides an event— keyboard events, animation frames
 subscriptions : Model -> Sub Msg
 subscriptions model =
   Sub.batch
